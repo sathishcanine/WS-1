@@ -743,7 +743,8 @@ PlayerSettings:
     Build: 0
     Collab: 0
     Game Performance: 0
-    Purchasing: 1
+    Legacy Analytics: 0
+    Purchasing: 0
     UDP: 0
     Unity Ads: 0
   luminIcon:
@@ -759,11 +760,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 2f28eb9a-0259-402b-a104-427fe7c0a3b5
+  cloudProjectId: bc421bb1-6ba6-4ca7-b94d-55bf4ee0a611
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: water sort(admob edition)
-  organizationId: yourhim27
+  projectName: Water Sort Puzzle
+  organizationId: suthishcanine
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0
