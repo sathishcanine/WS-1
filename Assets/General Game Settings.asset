@@ -16,9 +16,9 @@ MonoBehaviour:
   instagram_username: 
   facebook_page_ID: 
   gameId: 
-  BannerAd_ID: ca-app-pub-3940256099942544/6300978111
-  InterstitialAdId: ca-app-pub-3940256099942544/1033173712
-  rewardAdId: ca-app-pub-3940256099942544/5224354917
+  BannerAd_ID: ca-app-pub-4789468551786381/8658439123
+  InterstitialAdId: ca-app-pub-4789468551786381/2922842815
+  rewardAdId: ca-app-pub-4789468551786381/4348493172
   showInterstitialAfter_n_win: 2
   test_Mode: 1
   GDPR_message: 
