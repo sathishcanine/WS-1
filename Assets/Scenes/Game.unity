@@ -2250,7 +2250,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Add Extra Bottle
+  m_Text: Extra Empty Bottle
 --- !u!222 &929211208
 CanvasRenderer:
   m_ObjectHideFlags: 0

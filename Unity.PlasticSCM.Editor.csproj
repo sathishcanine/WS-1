@@ -60,9 +60,9 @@
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\UI\Tree\TableViewOperations.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\Views\History\HistorySelection.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\Gluon\UpdateReport\UpdateReportListHeaderState.cs" />
-     <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\UI\PlasticDialog.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\Inspector\DrawInspectorOperations.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\UI\Tree\TreeHeaderColumns.cs" />
+     <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\UI\PlasticDialog.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\UI\MeasureMaxWidth.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\WebApi\ChangesetFromCollabCommitResponse.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\Views\IncomingChanges\Gluon\Errors\ErrorListViewItem.cs" />

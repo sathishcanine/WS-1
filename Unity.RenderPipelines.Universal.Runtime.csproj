@@ -112,8 +112,8 @@
      <Compile Include="Packages\com.unity.render-pipelines.universal\Runtime\Overrides\ChannelMixer.cs" />
      <Compile Include="Packages\com.unity.render-pipelines.universal\Runtime\Passes\ColorGradingLutPass.cs" />
      <Compile Include="Packages\com.unity.render-pipelines.universal\Runtime\Passes\XROcclusionMeshPass.cs" />
-     <Compile Include="Packages\com.unity.render-pipelines.universal\Runtime\Overrides\ColorCurves.cs" />
      <Compile Include="Packages\com.unity.render-pipelines.universal\Runtime\External\LibTessDotNet\PriorityQueue.cs" />
+     <Compile Include="Packages\com.unity.render-pipelines.universal\Runtime\Overrides\ColorCurves.cs" />
      <Compile Include="Packages\com.unity.render-pipelines.universal\Runtime\Passes\CapturePass.cs" />
      <Compile Include="Packages\com.unity.render-pipelines.universal\Runtime\2D\Passes\Utility\RendererLighting.cs" />
      <Compile Include="Packages\com.unity.render-pipelines.universal\Runtime\2D\PixelPerfectCamera.cs" />

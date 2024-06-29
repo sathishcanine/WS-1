@@ -57,7 +57,7 @@
   </files>
   <settings>
     <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
-    <setting name="bundleId" value="com.braingamestudio.WaterSortPuzzle" />
+    <setting name="bundleId" value="com.atlasgamestudio.WaterSortPuzzle" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
     <setting name="gradlePropertiesTemplateEnabled" value="False" />
