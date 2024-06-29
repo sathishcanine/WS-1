@@ -216,6 +216,12 @@ public class GameScManger : MonoBehaviour
         LevleGeneartor.instance.addAnotherBottle();
     }
 
+    
+    public void reward_player_skip_level()
+    {
+            LevleGeneartor.instance.Skip_Level();
+    }
+
     public void UndoMoveCLicked()
     {
 
@@ -251,22 +257,27 @@ public class GameScManger : MonoBehaviour
 
     public void clickOnSkipbutoon()
     {
-        int coins = getcurrentCoinsNumber();
-        if (coins >= generalGameSettings.coinsNumber_to_skip)
-        {
-            coins -= generalGameSettings.coinsNumber_to_skip;
-            PlayerPrefs.SetInt("game_coins_number", coins);
+            PlayerPrefs.SetInt("reward_stats", 1);
+            GameAds.instance.showreward_Ad();
+            
+        // int coins = getcurrentCoinsNumber();
+        // if (coins >= generalGameSettings.coinsNumber_to_skip)
+        // {
+        //     coins -= generalGameSettings.coinsNumber_to_skip;
+        //     PlayerPrefs.SetInt("game_coins_number", coins);
 
-            // skip the game 
-            updateMain_CoinsVlue();
+        //     // skip the game 
+        //     updateMain_CoinsVlue();
 
-            LevleGeneartor.instance.Skip_Level();
+        //     LevleGeneartor.instance.Skip_Level();
 
-        }
-        else
-        {
-            notEnoughGames.SetActive(true);
-        }
+        // }
+        // else
+        // {
+        //     notEnoughGames.SetActive(true);
+        //     PlayerPrefs.SetInt("reward_stats", 1);
+        //     GameAds.instance.showreward_Ad();
+        // }
     }
 
 

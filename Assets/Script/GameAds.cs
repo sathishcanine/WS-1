@@ -193,6 +193,18 @@ public class GameAds : MonoBehaviour
     }
 
 
+    public void showreward_Ad_Skip()
+    {
+        if (rewardedAd != null && this.rewardedAd.CanShowAd())
+        {
+            rewardedAd.Show((Reward reward) =>
+            {
+                // TODO: Reward the user.
+                getuserRewardedSkipLevel();
+
+            });
+        }
+    }
   
 
 
@@ -252,6 +264,21 @@ public class GameAds : MonoBehaviour
         {
 
             GameScManger.instance.reward_player_addBottle();
+
+        }
+
+        requestToload_RewardedAd();
+    }
+
+    
+    void getuserRewardedSkipLevel()
+    {
+        int status_reward = PlayerPrefs.GetInt("reward_stats", -1);
+
+        if (status_reward == 1)
+        {
+
+            GameScManger.instance.reward_player_skip_level();
 
         }
 
