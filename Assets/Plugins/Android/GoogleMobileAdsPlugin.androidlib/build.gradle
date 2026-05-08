@@ -1,0 +1,25 @@
+// Full library module for Unity .androidlib (AGP 9). Fragment-only android{} caused "too late to set namespace".
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace 'com.google.android.gms.ads.unity.manifestlib'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 25
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+}

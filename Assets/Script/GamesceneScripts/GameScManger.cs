@@ -190,10 +190,7 @@ public class GameScManger : MonoBehaviour
 
     public void addOneTubeBtnClicked()
     {
-
-        PlayerPrefs.SetInt("reward_stats", 1);
         GameAds.instance.showreward_Ad();
-
     }
 
     int v_btl = 0;
@@ -257,9 +254,7 @@ public class GameScManger : MonoBehaviour
 
     public void clickOnSkipbutoon()
     {
-            PlayerPrefs.SetInt("reward_stats", 1);
-            GameAds.instance.showreward_Ad();
-            
+        GameAds.instance.showreward_Ad_Skip();
         // int coins = getcurrentCoinsNumber();
         // if (coins >= generalGameSettings.coinsNumber_to_skip)
         // {
@@ -293,21 +288,6 @@ public class GameScManger : MonoBehaviour
     #region  win panel butotns
     public void win_level()
     {
-        int n_win = PlayerPrefs.GetInt("n_win_value", 0);
-        n_win++;
-        if (n_win >= generalGameSettings.showInterstitialAfter_n_win)
-        {
-            //show interstitial ad
-            GameAds.instance.ShowInterstitialAd();
-
-            // give the n_win 0
-            n_win = 0;
-        }
-        // update the n_win value on playerprefs
-        PlayerPrefs.SetInt("n_win_value", n_win);
-
-
-
         // change the coins number on win panel
         coinsTextWinPanel.text = PlayerPrefs.GetInt("game_coins_number").ToString();
 

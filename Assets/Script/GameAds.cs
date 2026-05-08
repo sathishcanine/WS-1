@@ -8,12 +8,11 @@ public class GameAds : MonoBehaviour
     public GeneralGameSettings m_gamesettings;
     public static GameAds instance;
 
-    private string game_id, interstitial_id, banner_id, rewarded_id;
+    private string game_id, banner_id, rewarded_id;
     private bool testMode;
 
 
     private BannerView banner_view;
-    private InterstitialAd interstitial;
     private RewardedAd rewardedAd;
 
 
@@ -34,7 +33,6 @@ public class GameAds : MonoBehaviour
     {
 
         game_id = m_gamesettings.gameId;
-        interstitial_id = m_gamesettings.InterstitialAdId;
         banner_id = m_gamesettings.BannerAd_ID;
         rewarded_id = m_gamesettings.rewardAdId;
 
@@ -53,7 +51,6 @@ public class GameAds : MonoBehaviour
             //Debug.Log("show ads no remove ads"); 
 
             RequestBanner();
-            RequestInterstitial();
         }
 
     }
@@ -124,37 +121,14 @@ public class GameAds : MonoBehaviour
     #endregion
 
 
-    //*************************************************************** interstitial ad
+    //*************************************************************** interstitial ad (disabled — monetization uses rewarded for skip / extra bottle)
     #region  interstitial Ad
-
 
     public void ShowInterstitialAd()
     {
-        if (check_RemoveAds_Status_toShow() == true && interstitial != null && interstitial.CanShowAd())
-        {
-            Debug.Log("Showing interstitial ad.");
-            interstitial.Show();
-        }
+        // Intentionally empty: interstitials removed in favor of rewarded ads on skip & add-bottle.
     }
 
-    private void RequestInterstitial()
-    {
-        AdRequest request = AdRequestBuild();
-
-        // send the request to load the ad.
-        InterstitialAd.Load(interstitial_id, request,
-            (InterstitialAd ad, LoadAdError error) =>
-            {
-                // if error is not null, the load request failed.
-                if (error != null || ad == null)
-                {
-                    return;
-                }
-
-
-                interstitial = ad;
-            });
-    }
     #endregion
 
 
@@ -173,62 +147,48 @@ public class GameAds : MonoBehaviour
                     {
                         Debug.LogError("Rewarded ad failed to load an ad " +
                                        "with error : " + error);
+                        StartCoroutine(reload_reward());
                         return;
                     }
                     rewardedAd = ad;
+                    RegisterEventHandlers(rewardedAd);
                 });
     }
 
+    /// <summary>Watch ad to add an extra bottle (when allowed).</summary>
     public void showreward_Ad()
     {
-        if (rewardedAd != null && this.rewardedAd.CanShowAd())
-        {
-            rewardedAd.Show((Reward reward) =>
-            {
-                // TODO: Reward the user.
-                getuserRewarded();
+        if (!check_RemoveAds_Status_toShow())
+            return;
 
-            });
+        if (rewardedAd != null && rewardedAd.CanShowAd())
+        {
+            rewardedAd.Show((Reward reward) => GrantRewardExtraBottle());
         }
     }
 
 
+    /// <summary>Watch ad to skip the current level.</summary>
     public void showreward_Ad_Skip()
     {
-        if (rewardedAd != null && this.rewardedAd.CanShowAd())
-        {
-            rewardedAd.Show((Reward reward) =>
-            {
-                // TODO: Reward the user.
-                getuserRewardedSkipLevel();
+        if (!check_RemoveAds_Status_toShow())
+            return;
 
-            });
+        if (rewardedAd != null && rewardedAd.CanShowAd())
+        {
+            rewardedAd.Show((Reward reward) => GrantRewardSkipLevel());
         }
     }
-  
-
-
-    public void HandleRewardedAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
-    {
-        // the ads field to load 
-
-        StartCoroutine(reload_reward());
-
-        //load after 2 seconds
-    }
-
 
     private void RegisterEventHandlers(RewardedAd ad)
     {
-        // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
-            reload_reward();
+            StartCoroutine(reload_reward());
         };
-        // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
-            reload_reward();
+            StartCoroutine(reload_reward());
         };
     }
 
@@ -237,52 +197,21 @@ public class GameAds : MonoBehaviour
     IEnumerator reload_reward()
     {
         yield return new WaitForSeconds(2.0f);
+        rewardedAd = null;
         requestToload_RewardedAd();
     }
 
 
-    public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
+    void GrantRewardExtraBottle()
     {
-        Debug.Log("reward add field to show");
-    }
-
-
-
-    public void HandleUserEarnedReward(object sender, Reward args)
-    {
-        //reward the user
-        getuserRewarded();
-
-    }
-
-
-    void getuserRewarded()
-    {
-        int status_reward = PlayerPrefs.GetInt("reward_stats", -1);
-
-        if (status_reward == 1)
-        {
-
+        if (GameScManger.instance != null)
             GameScManger.instance.reward_player_addBottle();
-
-        }
-
-        requestToload_RewardedAd();
     }
 
-    
-    void getuserRewardedSkipLevel()
+    void GrantRewardSkipLevel()
     {
-        int status_reward = PlayerPrefs.GetInt("reward_stats", -1);
-
-        if (status_reward == 1)
-        {
-
+        if (GameScManger.instance != null)
             GameScManger.instance.reward_player_skip_level();
-
-        }
-
-        requestToload_RewardedAd();
     }
 
     #endregion
