@@ -224,8 +224,8 @@
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Nodes\Artistic\Blend\BlendNode.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Generation\Collections\RenderStateCollection.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Drawing\MaterialGraphEditWindow.cs" />
-     <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Nodes\Utility\Logic\AllNode.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Nodes\Procedural\CheckerboardNode.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Nodes\Utility\Logic\AllNode.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Drawing\Views\FloatField.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Util\QueuePool.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Nodes\Input\Geometry\ScreenPositionNode.cs" />
