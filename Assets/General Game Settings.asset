@@ -18,9 +18,10 @@ MonoBehaviour:
   gameId: ca-app-pub-4789468551786381~9859840155
   BannerAd_ID: ca-app-pub-4789468551786381/8658439123
   InterstitialAdId: ca-app-pub-4789468551786381/2922842815
+  rewardedInterstitialAdId: ca-app-pub-4789468551786381/3526072801
   rewardAdId: ca-app-pub-4789468551786381/4348493172
   showInterstitialAfter_n_win: 2
-  test_Mode: 1
+  test_Mode: 0
   GDPR_message: 
   privacy_Policy_Link: 
   coinsNumber_to_skip: 80

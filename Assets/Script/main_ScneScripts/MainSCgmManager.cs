@@ -63,7 +63,13 @@ public class MainSCgmManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // No-ads IAP removed; normalize pref on every launch from the main menu.
+        PlayerPrefs.SetInt("isPlayer_BuyNoAds", 0);
+        PlayerPrefs.Save();
+
         Screen.orientation = ScreenOrientation.Portrait;
+
+        AdMobRuntime.RequestInitializeOnce();
 
        // confirmGdprStatus();
 

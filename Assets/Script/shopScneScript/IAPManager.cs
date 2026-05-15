@@ -33,6 +33,9 @@ public class IAPManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.SetInt("isPlayer_BuyNoAds", 0);
+        PlayerPrefs.Save();
+
         setupIapPrices();
         // inActive_ActionFieldPanel();
     }
@@ -102,15 +105,9 @@ public class IAPManager : MonoBehaviour
 
     public void purchasRemoveAds()
     {
-        PlayerPrefs.SetInt("isPlayer_BuyNoAds", 1); // that's mean there is no ads anymore
-
-        showPurchasing_complete();
-
-
-        Invoke("loadHomeMenu", 2.0f);
-        // ShopSystem_Manager.instance.LoadHomeScene();
-
-
+        // No-ads IAP was removed from the UI/catalog; keep pref off if anything still calls this.
+        PlayerPrefs.SetInt("isPlayer_BuyNoAds", 0);
+        PlayerPrefs.Save();
     }
 
 

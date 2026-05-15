@@ -14,11 +14,12 @@ public class GeneralGameSettings : ScriptableObject
     public string facebook_page_ID;
 
 
-    [Header("Game ads settings")]
+    [Header("Game ads settings (replace Google sample IDs before store release)")]
     [Space(30)]
     public string gameId;
     public string BannerAd_ID;
     public string InterstitialAdId;
+    public string rewardedInterstitialAdId;
     public string rewardAdId;
     public int showInterstitialAfter_n_win;
     public bool test_Mode = true;

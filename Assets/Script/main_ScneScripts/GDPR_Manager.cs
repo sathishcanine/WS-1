@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Ump;
 using GoogleMobileAds.Ump.Api;
-
 public class GDPR_Manager : MonoBehaviour
 {
 
@@ -12,24 +9,14 @@ public class GDPR_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var debugSettings = new ConsentDebugSettings
-        {
-            // Geography appears as in EEA for debug devices.
-            DebugGeography = DebugGeography.EEA,
-            TestDeviceHashedIds = new List<string>
-            {
-                ""
-            }
-        };
-
-        // Here false means users are not under age.
-        ConsentRequestParameters request = new ConsentRequestParameters
+        // Do not ship ConsentDebugSettings (e.g. forced EEA) to all users — it breaks real
+        // geography and an empty TestDeviceHashedIds entry can misconfigure the SDK.
+        // Re-enable debug geography only while testing, with real hashed device IDs from Logcat.
+        var request = new ConsentRequestParameters
         {
             TagForUnderAgeOfConsent = false,
-            ConsentDebugSettings = debugSettings,
         };
 
-        // Check the current consent information status.
         ConsentInformation.Update(request, OnConsentInfoUpdated);
     }
 
